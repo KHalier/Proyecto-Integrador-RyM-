@@ -1,0 +1,10 @@
+.divCards{
+    display:flex;
+    flex-direction: row;
+    padding-left: 10%;
+    padding-right: 10%;
+    flex-wrap:wrap;
+    justify-content: center;
+    
+
+}

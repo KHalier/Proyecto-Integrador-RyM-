@@ -1,0 +1,11 @@
+.div{
+    background-color: rgb(166, 175, 172);
+    opacity: 0.5;
+
+}
+.div h1{
+    color: brown;
+}
+.div img{
+    float: right;
+}
