@@ -2,6 +2,8 @@ import { Connect, connect, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import {orderCards, filterCards} from '../../redux/actions/actions'
 import { useDispatch } from "react-redux";
+import styles from "./Favoritos.module.css"
+const {container, cards}=styles;
 
 
 //myFavorites se pasava como props usando el connect comentado mas debajo, pero en este caso usamos el useSelecto por lo que no es necesario
@@ -9,13 +11,6 @@ export default function Favorites({myFavorite}){
 
     const dispach = useDispatch();
     const favorites = useSelector(state=>state.myFavorite)
-
-    const orderCards=(value)=>{
-        console.log("order caards")
-    }
-    const filterCards=(value)=>{
-        console.log("filter caards")
-    }
 
     const handleDispach = (e)=>{
         const{name, value}= e.target;
@@ -28,7 +23,7 @@ export default function Favorites({myFavorite}){
         }
     }
     return(
-        <div>
+        <div className={container}>
             <div>
                 <select name='order' onClick={handleDispach}>
                     <option value='ascendente'>ASCENDENTE</option>
@@ -42,7 +37,7 @@ export default function Favorites({myFavorite}){
                     <option value='Unknown'>Unknown</option>
                 </select>
             </div>
-
+            <div className={cards}>
             {favorites?.map(fav=>(<Card
             name={fav.name}
             id={fav.id}
@@ -50,6 +45,8 @@ export default function Favorites({myFavorite}){
             gender={fav.gender}
             image={fav.image}
             />))}
+            </div>
+
 
         </div>
     )
