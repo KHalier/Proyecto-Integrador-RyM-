@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from './Form.module.css'
 import Validations from "./Validation";
 
-let {container, warning, pError}=styles;
+let {container, warning, pError, userAndpass}=styles;
 
 
 export default function Form(props){
@@ -56,6 +56,7 @@ export default function Form(props){
                 </label>    
                 </div>
                 <button>login</button>
+                <h1 className={userAndpass}>* el user y password de ingreso es a *</h1>
             </form>
         </div>
     )
