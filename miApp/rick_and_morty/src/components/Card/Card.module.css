@@ -33,8 +33,9 @@
     z-index: 100;
 }
 .btnCard:hover{
-    width: 11%;
-    height: 11%;
+    top: 0.5px;
+    width: 13%;
+    height: 12%;
     color:white;
     background-color: rgb(255, 0, 0);
     transition: 11.ms;
@@ -68,4 +69,14 @@
     bottom: 90%;
     z-index: 100;
     
+}
+
+.btnFav:hover{
+    top: 0.1px;
+    width: 20%;
+    height: 12%;
+    color:white;
+    background-color: rgb(98, 255, 0);
+    transition: 11.ms;
+    border-radius: 15%;
 }
