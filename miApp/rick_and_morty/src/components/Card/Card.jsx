@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 export default function Card({id, name, species, gender, image, onClose}) {
    const dispach= useDispatch();//se usa para enviar acciones al redux
-   const favorites=useSelector((state)=> state.myFavorite)//acceso directo al estado global(en reducer)
+   const favorites=useSelector((state)=> state.allCharacters)//acceso directo al estado global(en reducer)
    const [isFav, setIsFav]=useState(false)
 
    //este useEffect reppinta los favoritos al navegar aa  otra pagina de la app
@@ -25,6 +25,7 @@ export default function Card({id, name, species, gender, image, onClose}) {
    }
 //empaquetado de character para add a favoritos 
    let char={
+      key:id,
       name:name,
       gender:gender,
       species:species,

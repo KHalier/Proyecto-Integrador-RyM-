@@ -6,8 +6,8 @@ import styles from "./Favoritos.module.css"
 const {container, cards}=styles;
 
 
-//myFavorites se pasava como props usando el connect comentado mas debajo, pero en este caso usamos el useSelecto por lo que no es necesario
-export default function Favorites({myFavorite}){
+//myFavorites se pasaba como props usando el connect comentado mas debajo, pero en este caso usamos el useSelecto por lo que no es necesario
+export default function Favorites(){//aqui se pasaba {myFavorites}
 
     const dispach = useDispatch();
     const favorites = useSelector(state=>state.myFavorite)
@@ -24,17 +24,19 @@ export default function Favorites({myFavorite}){
     }
     return(
         <div className={container}>
+            
             <div>
-                <select name='order' onClick={handleDispach}>
+                <select name='order' onChange={handleDispach}>
                     <option value='ascendente'>ASCENDENTE</option>
                     <option value='descendente'>DESCENDENTE</option>
                 </select>
 
-                <select name='filter' onClick={handleDispach}>
+                <select name='filter' onChange={handleDispach}>
                     <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
                     <option value='Genderless'>Genderless</option>
-                    <option value='Unknown'>Unknown</option>
+                    <option value='unknown'>Unknown</option>
+                    <option value='x'>All</option>
                 </select>
             </div>
             <div className={cards}>

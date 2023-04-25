@@ -22,7 +22,12 @@ export const rootReduce = (state = initialState, actions)=>{
         case DELETE_FAVORITE:
             return{
                 ...state,
-                myFavorite : state.myFavorite.filter((el)=> el.id !== +payLoad)//filter ya devuelve un arreglo por lo que no es necesario crear uno como en ADD
+                myFavorite: state.myFavorite.filter(
+                (character) => character.id !== +payLoad
+                ),
+                allCharacters: state.allCharacters.filter(
+                (character) => character.id !== +payLoad
+                ),//filter ya devuelve un arreglo por lo que no es necesario crear uno como en ADD
             //el + del filter en el payload lo convierte en un numero 
             }
 
@@ -30,17 +35,19 @@ export const rootReduce = (state = initialState, actions)=>{
                 // const {allCharacters} = state;
                 return{
                     ...state,
-                    myFavorite : state.allCharacters.filter((el)=> el.gender === payLoad)
+                    myFavorite : payLoad==="x"? state.allCharacters : state.allCharacters.filter((el)=> el.gender === payLoad)
                 }
 
             case ORDER:
 
-            let newCharacters = state.allCharacters.sort((a,b)=>{
+            const newCharacters = state.myFavorite.sort((a,b)=>{
                 if(a.id > b.id){
-                    return payLoad==="ascendente"? 1 : -1;
+                    console.log(`ide de a: ${a.id} mayor a id de b: ${b.id}`)
+                    return payLoad ==="ascendente"? 1 : -1;
                 }
                 if(a.id < b.id){
-                    return payLoad==="descendente"? -1 : 1;
+                    console.log(`ide de a: ${a.id} menor a id de b: ${b.id}`)
+                    return payLoad ==="descendente"? -1 : 1;
                 }
             })
             return{
