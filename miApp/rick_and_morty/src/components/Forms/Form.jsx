@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from './Form.module.css'
 import Validations from "./Validation";
 
-let {container, warning, pError, userAndpass}=styles;
+let {container, warning, pError, userAndpass, buttonLogin}=styles;
 
 
 export default function Form(props){
@@ -24,6 +24,7 @@ export default function Form(props){
     const handleSubmit=(e)=>{
         e.preventDefault();//previene que recargue la pagina, no realiza su comportamiento normal
         props.login(userData);
+        
     }
 
     return (
@@ -55,8 +56,9 @@ export default function Form(props){
                     <p className={pError}>{errors.password && errors.password}</p>
                 </label>    
                 </div>
-                <button>login</button>
-                <h1 className={userAndpass}>* el user y password de ingreso es a *</h1>
+                <button className={errors.password && buttonLogin}>login</button>
+                <h1 className={userAndpass}>* el user es a@gmail.com *</h1>
+                <h1 className={userAndpass}>* el password es aaa123 *</h1>
             </form>
         </div>
     )

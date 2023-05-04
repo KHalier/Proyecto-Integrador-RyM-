@@ -11,8 +11,8 @@ import  Favorites  from './components/Favoritos/Favoritos'
 
 function App () {
  //MOCK DATA
- const userData="a";
- const password="a";
+ const userData="a@gmail.com";
+ const password="aaa123";
 
 let [characters,setCharacters]=useState([])
 const [access, setAccess]=useState(false)

@@ -26,3 +26,8 @@
 .userAndpass{
     font-size: x-small;
 }
+
+.buttonLogin:hover{
+    margin-left: 40%;
+    border: solid red 2px;
+}
