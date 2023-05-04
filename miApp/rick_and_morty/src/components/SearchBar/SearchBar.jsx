@@ -9,7 +9,9 @@ export default function SearchBar(props) {
          id:e.target.value,
       })
    }
-   function button1(){
+   function button1(e){
+      const input1=document.getElementById("inputText")
+      input1.value=""
       props.onSearch(id.id)
    }
    function button2(){
@@ -17,7 +19,7 @@ export default function SearchBar(props) {
    }
    return (
       <div>
-      <input type='search' onChange={cambiarId}/>
+      <input id="inputText" type='search' onChange={cambiarId}/>
       <button onClick={button1} >Agregar</button>
       <button onClick={button2}> Random</button>
       </div>

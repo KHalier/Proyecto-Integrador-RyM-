@@ -39,17 +39,19 @@ export const rootReduce = (state = initialState, actions)=>{
                 }
 
             case ORDER:
-
+                console.log(state.myFavorite)
+            console.log(payLoad)
             const newCharacters = state.myFavorite.sort((a,b)=>{
                 if(a.id > b.id){
                     console.log(`ide de a: ${a.id} mayor a id de b: ${b.id}`)
-                    return payLoad ==="ascendente"? 1 : -1;
+                    return payLoad ==="ascendente"? console.log(1) : console.log(-1);
                 }
                 if(a.id < b.id){
                     console.log(`ide de a: ${a.id} menor a id de b: ${b.id}`)
-                    return payLoad ==="descendente"? -1 : 1;
+                    return payLoad ==="descendente"? console.log(-1) : console.log(1);
                 }
             })
+            console.log(newCharacters)
             return{
                 ...state,
                 myFavorite : newCharacters
