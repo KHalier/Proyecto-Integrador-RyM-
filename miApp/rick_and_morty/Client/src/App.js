@@ -8,11 +8,11 @@ import ROUTES from './components/Rutas/routes.helper'
 import Detail from './components/Detail/Detail'
 import Form from './components/Forms/Form'
 import  Favorites  from './components/Favoritos/Favoritos'
-
+import axios from 'axios'
 function App () {
  //MOCK DATA
- const userData="a@gmail.com";
- const password="aaa123";
+ const userData="";
+ const password="";
 
 let [characters,setCharacters]=useState([])
 const [access, setAccess]=useState(false)
@@ -26,25 +26,34 @@ function onClose(id){
 
 }
 
-function onSearch(id){
-  fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-    .then((response) => response.json())
-    .then((data) =>{ 
-      if(data.name) {
-        let condicion=false;
-        characters.forEach(char=>{if(char.id===data.id)return condicion=true})
-        if(condicion===false){
-        setCharacters((oldChars) => [...oldChars, data]);  
-        }else{
-          window.alert("Este personaje ya se encuentra");
+// async function onSearch(id){
+//   const response = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+//   try {
+//     const {res:char}=response.data
+//     if(char.name)setCharacters(...characters, char)
+//     else window.alert("No hay personaje con ese ID")
+//   } catch (error) {
+//     alert(error);
+//   }
+const onSearch = async (id) => {
+  try {
+    await fetch(`http://localhost:3001/rickandmorty/character/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.name) {
+          const char = characters.some((char) => char.id === data.id);
+          if (!char) {
+            setCharacters((oldChars) => [...oldChars, data]);
+          } else {
+            window.alert("El personaje ya existe");
+          }
         }
-        
-      } else{
-        window.alert("No Hay personaje con ese ID");
-      }
       });
+  } catch (e) {
+    console.log("catch error: "+e.message);
+  }
+};
 
-}
 const logout= ()=>{
   setAccess(false)
   navigate("/");

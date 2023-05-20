@@ -38,24 +38,42 @@ export const rootReduce = (state = initialState, actions)=>{
                     myFavorite : payLoad==="x"? state.allCharacters : state.allCharacters.filter((el)=> el.gender === payLoad)
                 }
 
+            // case ORDER:
+            // console.log(state.myFavorite)
+            // const newCharacters = state.myFavorite.sort((a,b)=>{
+                
+            //     // if(a.id > b.id){
+            //     //     return payLoad ==="ascendente"? console.log(1) : console.log(-1);
+            //     // }
+            //     // if(a.id < b.id){
+            //     //     return payLoad ==="descendente"? console.log(-1) : console.log(1);
+            //     // }
+
+            
+            // console.log(newCharacters)
+            // return{
+            //     ...state,
+            //     myFavorite : newCharacters
+            // }
+            // })
             case ORDER:
-                console.log(state.myFavorite)
-            console.log(payLoad)
-            const newCharacters = state.myFavorite.sort((a,b)=>{
-                if(a.id > b.id){
-                    console.log(`ide de a: ${a.id} mayor a id de b: ${b.id}`)
-                    return payLoad ==="ascendente"? console.log(1) : console.log(-1);
+                
+                const { myFavorite } = state;
+                console.log(myFavorite);
+                const sorted = [...myFavorite].sort((a, b) => {
+                if (payLoad === "ascendente") {
+                    return a.id - b.id;
+                } else {
+                    return b.id - a.id;
                 }
-                if(a.id < b.id){
-                    console.log(`ide de a: ${a.id} menor a id de b: ${b.id}`)
-                    return payLoad ==="descendente"? console.log(-1) : console.log(1);
-                }
-            })
-            console.log(newCharacters)
-            return{
-                ...state,
-                myFavorite : newCharacters
-            }
+
+                });
+                console.log(sorted);
+                return {
+                    ...state,
+                    myFavorite: sorted,
+                };
+
 
         default:
             //guarda el objeto en nueva memooria lo que provoca que se renderice o chekeé
