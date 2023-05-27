@@ -8,7 +8,6 @@ import ROUTES from './components/Rutas/routes.helper'
 import Detail from './components/Detail/Detail'
 import Form from './components/Forms/Form'
 import  Favorites  from './components/Favoritos/Favoritos'
-import axios from 'axios'
 function App () {
  //MOCK DATA
  const userData="";

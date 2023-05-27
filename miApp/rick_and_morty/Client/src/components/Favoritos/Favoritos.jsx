@@ -46,6 +46,7 @@ export default function Favorites(){//aqui se pasaba {myFavorites}
             key={fav.key}
             gender={fav.gender}
             image={fav.image}
+            
             />))}
             </div>
 

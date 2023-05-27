@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Card.module.css";
 import ROUTES from "../Rutas/routes.helper";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,8 @@ export default function Card({id, name, species, gender, image, onClose}) {
    const dispach= useDispatch();//se usa para enviar acciones al redux
    const favorites=useSelector((state)=> state.allCharacters)//acceso directo al estado global(en reducer)
    const [isFav, setIsFav]=useState(false)
+   const location= useLocation()
+   
 
    //este useEffect reppinta los favoritos al navegar aa  otra pagina de la app
    useEffect(() => {
@@ -45,7 +47,10 @@ export default function Card({id, name, species, gender, image, onClose}) {
 
    return (
       <div className={styles.divCard}>
-         <button className={styles.btnCard} onClick={eliminacion}>X</button>
+         {
+            location.pathname !== ROUTES.FAVORITES && <button className={styles.btnCard} onClick={eliminacion}>X</button>
+         }
+         
          {
             isFav ? (
             <button className={styles.btnFav} onClick={handleFavorite}>❤️</button>
